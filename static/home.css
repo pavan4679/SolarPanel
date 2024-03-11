@@ -1,0 +1,12 @@
+.hover-container {
+    transition: transform 0.3s ease-in-out;
+}
+
+.hover-container:hover {
+    transform: translateY(-10px);
+}
+.mid{
+    background-image: url('https://i.pinimg.com/736x/8e/e7/f6/8ee7f63fc915fdb0121bd1757740d364.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+}

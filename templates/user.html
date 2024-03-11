@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="./static/cs.css">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous" />
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/20c5629a29.js" crossorigin="anonymous"></script>
+    <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+    integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  />
+</head>
+
+<body style="padding-top: 5vh; padding-bottom: 5vh; background-color: #417C9A ;background-repeat: no-repeat;background-size: cover;">
+   
+    
+    <div class="user-info">
+        <h1 >User Details</h1>
+    <form id="myForm" onsubmit="return submitForm()"> 
+        <div class="det">
+            <label  for="name">Name : </label>
+            <input  type="text" id="name" name="name">
+        </div>
+        <div class="det">
+            <label for="address">Address : </label>
+            <textarea id="address" style="border-radius: 4px;border: 2px solid black; width: 50vw; height: 100px;" name="address"></textarea>
+        </div>
+        <div class="det">
+            <label for="entity">Entity : </label>
+            <select id="entity" class="form-select" aria-label="Entity selection">
+                <option selected disabled>Select entity</option>
+                <option value="Average Household">Average Household</option>
+                <option value="Rural Household">Rural Household</option>
+                <option value="Residential Building">Residential Building</option>
+                <option value="Small Business">Small Business</option>
+            </select>
+        </div>
+        
+        <div class="det">
+            <label for="fans">Number of fans:</label>
+            <select id="fans" class="form-select" aria-label="Number of fans selection" onchange="checkCustomFan(this)">
+                <option selected disabled>Number of fans in your house</option>
+                <option value="0">0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="custom">Custom</option>
+            </select>
+            <input type="number" id="customFans" name="customFans" style="display: none;">
+        </div>
+        
+        <div class="det">
+            <label for="lights">Number of lights:</label>
+            <select id="lights" class="form-select" aria-label="Number of lights selection" onchange="checkCustomLights(this)">
+                <option selected disabled>Number of lights in your house</option>
+                <option value="0">0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="custom">Custom</option>
+            </select>
+            <input type="number" id="customLights" name="customLights" style="display: none;">
+        </div>
+        
+        <div class="det">
+            <label for="fridges">Number of fridges</label>
+            <select id="fridges" class="form-select" aria-label="Number of ovens selection" onchange="checkCustomFridge(this)">
+                <option selected disabled>Number of Fridges in your house</option>
+                <option value="0">0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="custom">Custom</option>
+            </select>
+            <input type="number" id="customFridges" name="customFridges" style="display: none;">
+        </div>
+
+        <div class="det">
+            <label for="aircooler">Number of Air Coolers:</label>
+            <select id="airCoolers" class="form-select" aria-label="Number of air coolers selection" onchange="checkCustomAirCoolers(this)">
+                <option selected disabled>Number of Air Coolers in your house</option>
+                <option value="0">0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="custom">Custom</option>
+            </select>
+            <input type="number" id="customAirCoolers" name="customAirCoolers" style="display: none;">
+        </div>
+
+        <div class="det">
+            <label for="acs">Number of ACs:</label>
+            <select id="acs"  class="form-select" aria-label="Number of ACs selection" onchange="checkCustomAc(this)">
+                <option selected disabled>Number of ACs in your house</option>
+                <option value="0">0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="custom">Custom</option>
+            </select>
+            <input type="number" id="customACs" name="customACs" style="display: none;">
+        </div>
+        
+        <div class="det">
+            <label for="tvs">Number of TVs:</label>
+            <select id="tvs" class="form-select" aria-label="Number of TVs selection" onchange="checkCustomTV(this)">
+                <option selected disabled>Number of TVs in your house</option>
+                <option value="0">0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="custom">Custom</option>
+            </select>
+            <input type="number" id="customTVs" name="customTVs" style="display: none;">
+        </div>
+        
+        <div class="det">
+            <label for="ovens">Number of ovens:</label>
+            <select id="ovens" class="form-select" aria-label="Number of ovens selection" onchange="checkCustomOven(this)">
+                <option selected disabled>Number of Ovens in your house</option>
+                <option value="0">0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="custom">Custom</option>
+            </select>
+            <input type="number" id="customOvens" name="customOvens" style="display: none;">
+        </div>
+
+        <div class="detw" style="display: flex; align-items: center;">
+            <label for="washingMachine" style="margin-right: 10px;">Washing Machine:</label>
+            <div class="row" style="width: 50vw; align-items: center; justify-content: center; white-space: nowrap;">
+                <input type="radio" class="btn-check" name="washingMachineStatus" id="option5" autocomplete="off" checked>
+                <label class="btn" for="option5">Yes, I Have</label>
+
+                <input type="radio" class="btn-check" name="washingMachineStatus" id="option6" autocomplete="off">
+                <label class="btn" for="option6">No, I Don't Have</label>
+            </div>
+
+        </div>
+        
+        <div class="det">
+            <label for="averageBill">Average current bill:</label>
+            <div class="range-container">
+                <input type="range" class="form-range" min="1000" max="5000" id="averageBill" onchange="updateRangeValue()">
+                <div class="range-values">
+                    <span>Min: 1000</span>
+                    <span>Max: 5000</span>
+                </div>
+                <p>Current value: <span id="billValueDisplay">0</span></p>
+            </div>
+        </div>
+
+        <button type="submit" style="width: 60vw;" class="btn btn-primary">Submit</button>
+    </form>    
+        
+      
+    </div>    
+
+    <centre>
+    <div class="displayContainer" id="details" style="display:none;">
+        <h1 style="text-align: center;">Cost estimations</h1>
+        <!-- Container for displaying details -->
+        <p id="detailsContent"></p>
+    </div>
+   
+    </centre>
+    <script>
+       function submitForm() {
+        event.preventDefault();
+        // Get form elements
+        var name = document.getElementById('name').value;
+        var address = document.getElementById('address').value;
+        var entity = document.getElementById('entity').value;
+        var fans = document.getElementById('fans').value;
+        var customFans = document.getElementById('customFans').value;
+        var lights = document.getElementById('lights').value;
+        var customLights = document.getElementById('customLights').value;
+        var fridges = document.getElementById('fridges').value;
+        var customFridges = document.getElementById('customFridges').value;
+        var aircoolers = document.getElementById('airCoolers').value;
+        var customAirCoolers = document.getElementById('customAirCoolers').value;
+        var acs = document.getElementById('acs').value;
+        var customACs = document.getElementById('customACs').value;
+        var tvs = document.getElementById('tvs').value;
+        var customTVs = document.getElementById('customTVs').value;
+        var ovens = document.getElementById('ovens').value;
+        var customOvens = document.getElementById('customOvens').value;
+        
+        var washingMachineOption = document.querySelector('input[name="washingMachineStatus"]:checked');
+
+        // Check if a washing machine option is selected
+        if (washingMachineOption) {
+            // Set the value of washingMachine based on the selected option
+            var washingMachine = washingMachineOption.id === 'option5' ? 1 : -1;
+        }
+
+
+        var averageBill = document.getElementById('averageBill').value;
+
+        // Check if all fields are filled
+        if (name && address && entity && fans && lights && aircoolers && acs  && fridges && ovens && tvs && washingMachine && averageBill) {
+            // Store values in variables
+            var formData = {
+                name: name,
+                address: address,
+                entity: entity,
+                fans: fans === 'custom' ? customFans : fans,
+                lights: lights === 'custom' ? customLights : lights,
+                fridges: fridges === 'custom' ? customFridges : fridges,
+                aircoolers: aircoolers === 'custom' ? customAirCoolers : aircoolers,
+                acs: acs === 'custom' ? customACs : acs,
+                tvs: tvs === 'custom' ? customTVs : tvs,
+                ovens: ovens === 'custom' ? customOvens : ovens,
+                washingMachine: washingMachine,
+                averageBill: averageBill
+            };
+            if(washingMachine == -1){
+                washingMachine=0;
+            }
+            var energy= (tvs*125)+(aircoolers*73)+(fans*65)+(lights*65)+(fridges*550)+(ovens*2150)+(acs*2500)+(washingMachine*950);
+            var noOfSolarPanels = Math.round(energy / 500);
+            var installationCost=noOfSolarPanels*65000;
+            var kWattenergy=energy/1000;
+        
+            console.log(formData);
+            
+            var detailsContent = "<div style=' font-size: 1.2em;'> Hey " + name + "..<br><b>Energy Consumed: </b>" + energy + "W <br><b>The number of solar panels need to be installed: </b> " + noOfSolarPanels + "<br><b>The installation cost: </b>₹ " + installationCost + " <br><br>Government is providing subsidies";
+            var actualCost= 0;
+            if (kWattenergy >= 3) {
+                actualCost=78000;
+                detailsContent += "<br>Since, your energy consumption is greater than 3kW, the government provides ₹ 78,000";
+            } else if (kWattenergy >= 2) {
+                actualCost=60000;
+                detailsContent += "<br>Since, your energy consumption is between 2kW and 3kW, the government provides ₹ 60,000";
+            } else {
+                actualCost=30000;
+                detailsContent += "<br>Since, your energy consumption is less than 2kW, the government provides ₹ 30,000";
+            }
+            detailsContent+="<br>So,It would cost you around ₹ <b>"+ (installationCost-actualCost)+"</b>";
+            document.getElementById('detailsContent').innerHTML = detailsContent;
+
+           
+            document.getElementById('details').style.display = "block";
+
+            // Scroll down to the details section
+            document.getElementById('details').scrollIntoView({ behavior: 'smooth' });
+            return false;
+
+        } else {
+            // Display error message or perform other actions if not all fields are filled
+            alert('Please fill in all fields before submitting the form.');
+            return false; 
+
+        }
+    }
+
+         function updateRangeValue() {
+        var billValue = document.getElementById("averageBill").value;
+        document.getElementById("billValueDisplay").textContent = billValue;
+    }
+
+function checkCustomTV(select) {
+        var customInput = document.getElementById("customTVs");
+        if (select.value === "custom") {
+            select.style.display = "none";
+            customInput.style.display = "inline-block";
+        } else {
+            select.style.display = "inline-block";
+            customInput.style.display = "none";
+        }
+    }
+    function checkCustomFan(select) {
+            var customInput = document.getElementById("customFans");
+        if (select.value === "custom") {
+            select.style.display = "none";
+            customInput.style.display = "inline-block";
+        } else {
+            select.style.display = "inline-block";
+            customInput.style.display = "none";
+        }
+    }
+
+    function checkCustomAirCoolers(select) {
+            var customInput = document.getElementById("customAirCoolers");
+        if (select.value === "custom") {
+            select.style.display = "none";
+            customInput.style.display = "inline-block";
+        } else {
+            select.style.display = "inline-block";
+            customInput.style.display = "none";
+        }
+    }
+    function checkCustomFridge(select) {
+            var customInput = document.getElementById("customFridges");
+        if (select.value === "custom") {
+            select.style.display = "none";
+            customInput.style.display = "inline-block";
+        } else {
+            select.style.display = "inline-block";
+            customInput.style.display = "none";
+        }
+    }
+    function checkCustomAc(select) {
+        var customInput = document.getElementById("customACs");
+        if (select.value === "custom") {
+            select.style.display = "none";
+            customInput.style.display = "inline-block";
+        } else {
+            select.style.display = "inline-block";
+            customInput.style.display = "none";
+        }
+    }
+    function checkCustomOven(select) {
+            var customInput = document.getElementById("customOvens");
+        if (select.value === "custom") {
+            select.style.display = "none";
+            customInput.style.display = "inline-block";
+        } else {
+            select.style.display = "inline-block";
+            customInput.style.display = "none";
+        }
+    }
+    function checkCustomLights(select) {
+        var customInput = document.getElementById("customLights");
+        if (select.value === "custom") {
+            select.style.display = "none";
+            customInput.style.display = "inline-block";
+        } else {
+            select.style.display = "inline-block";
+            customInput.style.display = "none";
+        }
+    }
+
+    </script>
+</body>
+
+</html>

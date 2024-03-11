@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="./static/cs.css">
+    <link rel="stylesheet" href="./static/home.css">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous" />
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/20c5629a29.js" crossorigin="anonymous"></script>
+    <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+    integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  />
+</head>
+
+<body>
+   
+   
+    <nav class="navbar navbar-expand-lg navbar-light bg-white " style="height: 15vh;">
+      <div class="container" style="display:flex; justify-content:space-between;height: 15vh;">
+          <a class="navbar-brand" href="#">
+            <h1><span><img src="./static/solar-panel.png" width="40" height="40"></span> <span style="font-family: 'Poppins', sans-serif; font-size:36px; line-height:0px;"> Solar Panel Detector </span></h1>
+          </a>
+
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+              <div class="navbar-nav ml-auto">
+                  <a class="nav-link " id="navitem1" href="#who"><b>WHO WE ARE </b><i class="fa fa-search" style="font-size:18px"></i> </a>&nbsp;
+                  <a class="nav-link" id="navitem2" href="#what"><b>WHAT WE DO </b><i class='fas fa-clipboard-list' style='font-size:18px'></i></a>&nbsp;&nbsp;
+                  <a class="nav-link" id="navitem3" href="#dp"><b>Follow Us </b><i class="fa fa-telegram" style="font-size:18px"></i></a>&nbsp;&nbsp;
+                  <a class="nav-link" id="navitem4" href="#faqs"><b>FAQ's </b><i class="fa fa-question-circle" style="font-size:18"></i></a>&nbsp;&nbsp;
+              </div>
+          </div>
+
+      </div>
+  </nav>
+
+
+    <div class="mid" style="height: 85vh;">
+    <div style="background-color: #cedef2dd; height:50vh; width: 50vh; border-radius: 10px; border:1px solid black;position: absolute; text-align: center;  top: 50%; left: 50%; transform: translate(-50%, -50%); align-items: center;justify-content: center; display: flex; flex-direction: column;">
+        <h2>Choose the One</h2>
+        <div style="display: flex; flex-direction: column; margin-top: 20px;">
+          <button style="border-radius: 10px; padding: 10px 20px; margin-bottom: 10px; margin: 5px;" onclick="redirectToIndex()">Government Organization</button>
+          <button style="border-radius: 10px; padding: 10px 20px;margin-top: 10px; margin: 5px;">Solar Panel Dealer</button>
+          <button style="border-radius: 10px; padding: 10px 20px; margin-top: 10px; margin: 5px;" onclick="redirectToUser()">Individual User</button>
+        </div>
+      </div>
+    </div>
+    
+      <div style="display: flex;flex-direction: row;color: rgb(231, 228, 228);  width: 100%; margin: 0 auto; padding: 20px; text-align: center; font-size: 0;">
+        <div class="col-12 col-md-4 col-lg-4 mb-3 hover-container" style=" padding: 20px; background-color: #064789; border-radius: 50px 50px 0 0; font-size: 16px; box-sizing: border-box;">
+            <h4>Government Organization</h4>
+            <p style="text-align: justify;">
+                <b>Utilization for Solar Panel Detection:</b> Government organizations can utilize the application to detect the number of houses equipped with solar panels in various regions like areas, cities, or districts.
+            </p>
+            <p style="text-align: justify;">
+                <b>Estimation of Solar Panel Installation Needs:</b> The application aids in estimating the number of houses without solar panels, facilitating the calculation of installation costs for specific locations.
+            </p>
+            <p style="text-align: justify;">
+                <b>Planning and Budgeting Assistance:</b> By providing insights into the distribution of solar panel installations, the app helps government organizations in planning and budgeting for solar energy initiatives effectively.
+            </p>
+        </div>
+        <div class="col-12 col-md-4 col-lg-4 mb-3 hover-container" style="margin: 0 6px; padding: 20px; background-color: #427aa1; border-radius: 50px 50px 0 0; font-size: 16px; box-sizing: border-box;">
+            <h4>Solar Panel Dealers</h4>
+            <p style="text-align: justify;"><b>Product Catalog Presentation:</b> Dealers benefit from presenting a comprehensive product catalog showcasing various solar panels, inverters, batteries, etc., accompanied by detailed pricing information.</p>
+            <p style="text-align: justify;"><b>Inventory Tracking System:</b> Implementing a robust inventory tracking system enables dealers to monitor stock levels accurately and replenish inventory as needed to meet customer demands.</p> 
+            <p style="text-align: justify;"><b>Order Management Tools:</b> Efficient tools for managing orders facilitate seamless transactions, ensuring timely delivery and customer satisfaction.
+
+            </p>
+
+        </div>
+        <div class="col-12 col-md-4 col-lg-4 mb-3 hover-container" style="color: rgb(130, 127, 127); padding: 20px; background-color: #ebf2fa; border-radius: 50px 50px 0 0; font-size: 16px; box-sizing: border-box;">
+            <h4>Individual User</h4>
+            <p style="text-align: justify;"><b>Solar Benefits Overview:</b> Informing homeowners about the advantages of solar power, including cost savings and environmental benefits.
+</p>
+            <p style="text-align: justify;">
+                <b>System Selection Guidance:</b> Assisting homeowners in choosing the most suitable solar system for their property based on their energy needs and budget.
+                </p>
+            <p style="text-align: justify;">
+                <b>Installation Support:</b> Providing resources and connecting homeowners with certified installers for seamless installation and ongoing maintenance of their solar panels.</p>
+        </div>
+        
+      </div>  
+      
+      <script>
+        function redirectToUser() {
+            window.location.href = "/user";
+        }
+        function redirectToIndex() {
+            window.location.href = "/index";
+        }
+    </script>
+
+
+</body>
+
+</html>
+
