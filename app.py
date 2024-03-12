@@ -34,8 +34,12 @@ def user(request: Request):
 def index(request: Request):
     return templates.TemplateResponse("index.html", {"request": request})
 
+@app.get('/user1')
+def user1(request: Request):
+    return templates.TemplateResponse("user1.html", {"request": request})
 
-@app.post("/user")
+
+@app.post("/user",response_class=HTMLResponse)
 async def submit_form( request: Request,
     name: str = Form(...),
     address: str = Form(...),
@@ -47,26 +51,9 @@ async def submit_form( request: Request,
     acs: int = Form(...),
     tvs: int = Form(...),
     ovens: int = Form(...),
-    washingMachine: int = Form(...),
-    averageBill: int = Form(...),
+    washingMachine: int = Form(...)
 ):
-    # Do something with the form data
-    form_data = {
-        "name": name,
-        "address": address,
-        "fans": fans,
-        "lights": lights,
-        "fridges": fridges,
-        "airCoolers": airCoolers,
-        "acs": acs,
-        "tvs": tvs,
-        "ovens": ovens,
-        "washingMachine": washingMachine,
-        
-    }
-    
-    # Process the form data or store it in a database
-    print(form_data)
+   
     
     energy=(tvs*125)+(airCoolers*73)+(fans*65)+(lights*65)+(fridges*550)+(ovens*2150)+(acs*2500)+(washingMachine*950)
     
@@ -86,9 +73,12 @@ async def submit_form( request: Request,
     actual_cost= installationCost-subsidy
 
     print(actual_cost)
+    print(noOfSolarPanels)
     
     context = {
         "request": request,
+        "name":name,
+        "energy":energy,
         "noOfSolarPanels" : noOfSolarPanels,
         "installationCost": installationCost,
         "kWattenergy":kWattenergy,
@@ -96,7 +86,7 @@ async def submit_form( request: Request,
         "actual_cost":actual_cost
     }
 
-    return templates.TemplateResponse("user1.html", {"request": request})
+    return templates.TemplateResponse("user1.html",context)
    
 
 
