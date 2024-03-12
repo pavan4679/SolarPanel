@@ -35,6 +35,71 @@ def index(request: Request):
     return templates.TemplateResponse("index.html", {"request": request})
 
 
+@app.post("/user")
+async def submit_form( request: Request,
+    name: str = Form(...),
+    address: str = Form(...),
+    entity:str= Form(...), 
+    fans: int = Form(...), 
+    lights: int = Form(...),
+    fridges: int = Form(...),
+    airCoolers: int = Form(...),
+    acs: int = Form(...),
+    tvs: int = Form(...),
+    ovens: int = Form(...),
+    washingMachine: int = Form(...),
+    averageBill: int = Form(...),
+):
+    # Do something with the form data
+    form_data = {
+        "name": name,
+        "address": address,
+        "fans": fans,
+        "lights": lights,
+        "fridges": fridges,
+        "airCoolers": airCoolers,
+        "acs": acs,
+        "tvs": tvs,
+        "ovens": ovens,
+        "washingMachine": washingMachine,
+        
+    }
+    
+    # Process the form data or store it in a database
+    print(form_data)
+    
+    energy=(tvs*125)+(airCoolers*73)+(fans*65)+(lights*65)+(fridges*550)+(ovens*2150)+(acs*2500)+(washingMachine*950)
+    
+    noOfSolarPanels = round(energy / 500)
+    installationCost=noOfSolarPanels*65000
+    kWattenergy=energy/1000
+    
+    subsidy=0
+
+    if kWattenergy >= 3 :
+        subsidy=78000
+    elif (kWattenergy >= 2):
+        subsidy=60000
+    else:
+        subsidy=30000
+    
+    actual_cost= installationCost-subsidy
+
+    print(actual_cost)
+    
+    context = {
+        "request": request,
+        "noOfSolarPanels" : noOfSolarPanels,
+        "installationCost": installationCost,
+        "kWattenergy":kWattenergy,
+        "subsidy":subsidy,   
+        "actual_cost":actual_cost
+    }
+
+    return templates.TemplateResponse("user1.html", {"request": request})
+   
+
+
 @app.post("/upload_text",response_class=HTMLResponse)
 async def upload_text(request: Request,userInput: str = Form(...)):
     
