@@ -21,6 +21,27 @@ UPLOAD_FOLDER = "images"
 if not os.path.exists(UPLOAD_FOLDER):
     os.makedirs(UPLOAD_FOLDER)
 
+
+
+
+# Function to get the user's location (latitude and longitude) from their address using Google Maps Geocoding API
+def get_location(address, api_key):
+    url = f"https://maps.googleapis.com/maps/api/geocode/json?address={address}&key={api_key}"
+    response = requests.get(url)
+    data = response.json()
+    location = data["results"][0]["geometry"]["location"]
+    return location
+
+# Function to find solar panel dealers near a given location using Google Places API
+def find_solar_panel_dealers(location, radius, api_key):
+    url = f"https://maps.googleapis.com/maps/api/place/nearbysearch/json?location={location['lat']},{location['lng']}&radius={radius}&keyword=solar%20panel%20dealers&key={api_key}"
+    response = requests.get(url)
+    data = response.json()
+    dealers = data["results"][:5]
+    return dealers
+
+
+
 @app.get('/')
 def home(request: Request):
     return templates.TemplateResponse("home.html", {"request": request})
@@ -74,9 +95,19 @@ async def submit_form( request: Request,
 
     print(actual_cost)
     print(noOfSolarPanels)
+
+    user_address = address 
+    api_key = "AIzaSyB8zWPtv1G6B05tim27903BAeUQXjGS9dc"
+    radius = 3000  
+
+    location = get_location(user_address, api_key)
+    dealers = find_solar_panel_dealers(location, radius, api_key)
+     
+     
     
     context = {
         "request": request,
+        "dealers":dealers,
         "name":name,
         "energy":energy,
         "noOfSolarPanels" : noOfSolarPanels,
