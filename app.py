@@ -12,7 +12,17 @@ import subprocess
 import shutil
 import easyocr
 from yolov5.detect import counter
-             
+import psycopg2
+
+
+conn = psycopg2.connect(
+    dbname="userdb",
+    user="app",
+    password="63nuHu2D8moA89XK8U00S5OK",
+    host="early-advanced-boa.a1.pgedge.io",
+    port="5432"
+)
+
 app = FastAPI()
 app.mount("/static", StaticFiles(directory="static"), name="static")
 templates = Jinja2Templates(directory="templates")
