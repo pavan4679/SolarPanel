@@ -6,7 +6,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
+    
 }
 
 :root {
@@ -32,7 +32,7 @@ body {
     background-repeat: no-repeat;
     display: flex;
     flex-direction: row;
-    min-height:80%;
+    min-height:100%;
     align-items: center;
     justify-content: space-evenly;
 
@@ -275,7 +275,7 @@ body {
 {
   margin-bottom: 5vh;
   background-color: #B7D7EA;
-  border: 3px solid black;
+ 
   margin-left: 20vw;
   display: flex;
   flex-direction: column;
@@ -300,7 +300,7 @@ body {
 .det label
 {
   width:10vw;
-  font-size: 20px;
+  font-size: 18px;
   font-weight: bold;
   text-align: center; 
   align-items: center;

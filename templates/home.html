@@ -44,17 +44,17 @@
 
 
     <div class="mid" style="height: 85vh;">
-    <div style="background-color: #cedef2dd; height:50vh; width: 50vh; border-radius: 10px; border:1px solid black;position: absolute; text-align: center;  top: 50%; left: 50%; transform: translate(-50%, -50%); align-items: center;justify-content: center; display: flex; flex-direction: column;">
-        <h2>Choose the One</h2>
+    <div style="background-color: #ead9b2dd; height:50vh; width: 50vh; border-radius: 10px; position: absolute; text-align: center;  top: 50%; left: 50%; transform: translate(-50%, -50%); align-items: center;justify-content: center; display: flex; flex-direction: column;">
+        <h2>Choose One</h2>
         <div style="display: flex; flex-direction: column; margin-top: 20px;">
-          <button style="border-radius: 10px; padding: 10px 20px; margin-bottom: 10px; margin: 5px;" onclick="redirectToIndex()">Government Organization</button>
-          <button style="border-radius: 10px; padding: 10px 20px;margin-top: 10px; margin: 5px;">Solar Panel Dealer</button>
-          <button style="border-radius: 10px; padding: 10px 20px; margin-top: 10px; margin: 5px;" onclick="redirectToUser()">Individual User</button>
+          <button style=" border-color: transparent; border-radius: 10px; padding: 10px 20px; margin-bottom: 10px; margin: 5px;" onclick="redirectToIndex()">Government Organization</button>
+          <button style="border-radius: 10px; padding: 10px 20px;border-color: transparent;  margin-top: 10px; margin: 5px;" onclick="redirectToDealer()">Solar Panel Dealer</button>
+          <button style="border-radius: 10px; padding: 10px 20px;border-color: transparent;  margin-top: 10px; margin: 5px;" onclick="redirectToUser()">Individual User</button>
         </div>
       </div>
     </div>
     
-      <div style="display: flex;flex-direction: row;color: rgb(231, 228, 228);  width: 100%; margin: 0 auto; padding: 20px; text-align: center; font-size: 0;">
+      <div style="display: flex;flex-direction: row;color: rgb(239, 235, 235);  width: 100%; margin: 0 auto; padding: 20px; text-align: center; font-size: 0;">
         <div class="col-12 col-md-4 col-lg-4 mb-3 hover-container" style=" padding: 20px; background-color: #064789; border-radius: 50px 50px 0 0; font-size: 16px; box-sizing: border-box;">
             <h4>Government Organization</h4>
             <p style="text-align: justify;">
@@ -287,6 +287,10 @@
         function redirectToIndex() {
             window.location.href = "/index";
         }
+        function redirectToDealer()
+        {
+          window.location.href = "/dealer";
+        } 
     </script>
 
 

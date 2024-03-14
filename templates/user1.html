@@ -18,52 +18,54 @@
   />
 
   <style>
-    .container {
+    .cont {
       width: 50%; /* Adjust as needed */
       margin: 0 auto; /* Center horizontally */
-      margin-bottom: 2vh;
-      padding: 10px;
       border: 1px solid black;
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Adjust shadow properties as needed */
       text-align: center; /* Center text inside container */
+      border-radius: 30px;
     }
   </style>
 </head>
 
-<body style="padding-top: 5vh; padding-bottom: 5vh; background-color: #417C9A ;background-repeat: no-repeat;background-size: cover;">
+<body style="padding-top: 5vh; padding-bottom: 5vh;background-repeat: no-repeat;background-size: cover;">
    
 
   <div style="display: flex;flex-direction: row;justify-content: center; align-items: center; ">
    
-    <div class="container col-lg-5" style="padding: 3vh;" >
-        <h1>Cost estimations</h1>
-        <h4>Hey {{name}}.. <br><b>Energy Consumed:</b> {{energy}}</h4>
-        <h4><b>The installation cost: </b>₹ {{installationCost}}</h4>
-        <h4><b>The number of solar panels need to be installed: </b> {{noOfSolarPanels}}</h4>
-        <h4>Government is providing subsidies</h4>
-        {% if kWattenergy>=3 %}
-        <h4>Since, your energy consumption is greater than 3kW, the government provides ₹ 78,000</h4>
-        <h5>So,It would cost you around ₹ {{installationCost-78000}}</h5>
-        {% endif %}
-        {% if kWattenergy >= 2 and kWattenergy < 3 %}
-        <h4>Since, your energy consumption is greater than 2kW, the government provides ₹ 60,000</h4>
-        <h5>So,It would cost you around ₹ {{installationCost-60000}}</h5>
-        {% endif %}
-        {% if kWattenergy>=1 and kWattenergy < 2 %}
-        <h4>Since, your energy consumption is greater than 3kW, the government provides ₹ 30,000</h4>
-        <h4>So,It would cost you around ₹ {{installationCost-30000}}</h4>
-        {% endif %} 
-        
-      </div>       
-
-      <div class="container col-lg-5" style="padding: 3vh;">
-        <h1>Nearby Solar Dealers</h1>
+    <div class="cont col-lg-5" style="padding: 0;">
+      <h1 style="background-color: rgb(196, 215, 233); border-top-left-radius: 30px; border-top-right-radius: 30px;">Cost estimations</h1>
+      <div style="background-color: white; border-bottom-left-radius: 30px; border-bottom-right-radius: 30px;">
+          <h4>Hey {{name}}.. <br><b>Energy Consumed:</b> {{energy}}</h4>
+          <h4><b>The installation cost: </b>₹ {{installationCost}}</h4>
+          <h4><b>The number of solar panels need to be installed: </b> {{noOfSolarPanels}}</h4>
+          <h4>Government is providing subsidies</h4>
+          {% if kWattenergy>=3 %}
+          <h4>Since, your energy consumption is greater than 3kW, the government provides ₹ 78,000</h4>
+          <h5>So,It would cost you around ₹ {{installationCost-78000}}</h5>
+          {% endif %}
+          {% if kWattenergy >= 2 and kWattenergy < 3 %}
+          <h4>Since, your energy consumption is greater than 2kW, the government provides ₹ 60,000</h4>
+          <h5>So,It would cost you around ₹ {{installationCost-60000}}</h5>
+          {% endif %}
+          {% if kWattenergy>=1 and kWattenergy < 2 %}
+          <h4>Since, your energy consumption is greater than 3kW, the government provides ₹ 30,000</h4>
+          <h4>So,It would cost you around ₹ {{installationCost-30000}}</h4>
+          {% endif %}
+      </div>
+  </div>
+  
+  <div class="cont col-lg-5" style="padding:0; background-color: rgb(196, 215, 233);">
+    <h1>Nearby Solar Dealers</h1>
+      <div style="background-color: white; border-bottom-left-radius: 30px; border-bottom-right-radius: 30px;"> 
         {% for dealer in dealers %}
-            <div class="dealer-info">
+            <div class="dealer-info" style="padding-top: 10px; padding-bottom: 8px; {% if loop.last %}border-bottom: none;{% else %}border-bottom: 2px solid black;{% endif %}">
                 <p><b>Name:</b> {{ dealer["name"] }}</p>
                 <p><b>Vicinity:</b> {{ dealer["vicinity"] }}</p>
             </div>
         {% endfor %}
+    </div>  
     </div>
 
     </div>

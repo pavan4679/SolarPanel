@@ -50,6 +50,10 @@ def home(request: Request):
 def user(request: Request):
     return templates.TemplateResponse("user.html", {"request": request})
 
+@app.get('/dealer')
+def user(request: Request):
+    return templates.TemplateResponse("dealer.html", {"request": request})
+
        
 @app.get('/index')
 def index(request: Request):
