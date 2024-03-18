@@ -13,6 +13,7 @@ import shutil
 import easyocr
 from yolov5.detect import counter
 import psycopg2
+from geopy.distance import geodesic
 
 
 conn = psycopg2.connect(
@@ -61,10 +62,61 @@ def user(request: Request):
     return templates.TemplateResponse("user.html", {"request": request})
 
 @app.get('/dealer')
-def user(request: Request):
+def dealer(request: Request):
     return templates.TemplateResponse("dealer.html", {"request": request})
 
-       
+@app.post('/dealer',response_class=HTMLResponse)
+def dealer(request: Request,
+     address: str = Form(...)):
+    GOOGLE_MAPS_API_KEY='AIzaSyB8zWPtv1G6B05tim27903BAeUQXjGS9dc'
+    url = f"https://maps.googleapis.com/maps/api/geocode/json?address={address}&key={GOOGLE_MAPS_API_KEY}"
+
+    # Make a GET request to the Google Maps Geocoding API
+    response = requests.get(url)
+    data = response.json()
+
+    # Parse the response data to extract longitude and latitude
+    if data['status'] == 'OK':
+        results = data['results'][0]
+        location = results['geometry']['location']
+        longitude = location['lng']
+        latitude = location['lat']
+        
+
+
+        nearest_users = []
+        for user in users:
+            user_name, user_address, user_phone_number, user_energy_consumption = user
+
+            # Google Maps API request to get latitude and longitude of user's address
+            user_url = f"https://maps.googleapis.com/maps/api/geocode/json?address={user_address}&key={GOOGLE_MAPS_API_KEY}"
+            user_response = requests.get(user_url)
+            user_data = user_response.json()
+
+            if user_data['status'] == 'OK':
+                user_results = user_data['results'][0]
+                user_location = user_results['geometry']['location']
+                user_longitude = user_location['lng']
+                user_latitude = user_location['lat']
+
+                # Calculate distance between input address and user's address
+                distance = geodesic((input_latitude, input_longitude), (user_latitude, user_longitude)).kilometers
+
+                # Append user information along with distance
+                nearest_users.append({
+                    'name': user_name,
+                    'address': user_address,
+                    'phone_number': user_phone_number,
+                    'energy_consumption': user_energy_consumption,
+                    'distance': distance
+                })
+
+        nearest_users.sort(key=lambda x: x['distance'])
+
+        print(nearest_users)  
+    
+              
+
 @app.get('/index')
 def index(request: Request):
     return templates.TemplateResponse("index.html", {"request": request})
@@ -78,6 +130,7 @@ def user1(request: Request):
 async def submit_form( request: Request,
     name: str = Form(...),
     address: str = Form(...),
+    phone: str=Form(...),
     entity:str= Form(...), 
     fans: int = Form(...), 
     lights: int = Form(...),
@@ -92,6 +145,11 @@ async def submit_form( request: Request,
     
     energy=(tvs*125)+(airCoolers*73)+(fans*65)+(lights*65)+(fridges*550)+(ovens*2150)+(acs*2500)+(washingMachine*950)
     
+    cur = conn.cursor()
+    cur.execute("INSERT INTO info (uname,address,phone_number,energy_consumption) VALUES (%s, %s,%s, %s)", (name,address,phone,energy))
+    conn.commit()
+    cur.close() 
+
     noOfSolarPanels = round(energy / 500)
     installationCost=noOfSolarPanels*65000
     kWattenergy=energy/1000
