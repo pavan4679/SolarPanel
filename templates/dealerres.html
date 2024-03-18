@@ -10,6 +10,10 @@
     <style>
         body, html {
             height: 100%;
+            color: white;
+            background-image: url('https://img.freepik.com/free-photo/solar-power-station-surrounded-by-trees_181624-21279.jpg?t=st=1710752064~exp=1710755664~hmac=aacc78bf7faa69124ccc613ac72b0f0c5d259cf2d171cb389a7369a6a1e0711b&w=900');
+            background-repeat: no-repeat;
+            background-size: cover;
         }
 
         .center-container {
@@ -17,6 +21,13 @@
             justify-content: center;
             align-items: center;
             height: 100%;
+        }
+        .table
+        {
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            color: white;
         }
 
         .input-container {
@@ -48,6 +59,15 @@
         table {
             width: 100%;
         }
+
+        .sub
+        {
+            border-radius:10px ;
+            font-size: 24px;
+            background-color: rgb(209, 198, 181);
+            border: transparent;
+        }
+         
     </style>
 </head>
 <body>
@@ -55,10 +75,10 @@
         <div class="input-container">
             <form id="myForm" action="/dealer" method="post">
                 <div class="form-group">
-                    <label for="address" style="font-size: 24px">Please give me your address:</label>
-                    <textarea class="form-control" name="address" id="address" rows="5" placeholder="Enter your address"></textarea>
+                    <label for="address" style="font-size: 28px; font-weight: 600; text-align: center;" >Please give me your address </label>
+                    <textarea style="opacity: 0.8;" class="form-control" name="address" id="address" rows="5" ></textarea>
                 </div>
-                <div style="text-align: center;"><button  type="submit" class="btn btn-primary">Submit</button></div>
+                <div style="text-align: center;"><button  type="submit" class="btn btn-primary sub" >Submit</button></div>
             </form>
         </div>
         <div>
