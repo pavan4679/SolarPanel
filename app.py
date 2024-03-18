@@ -68,13 +68,20 @@ def dealer(request: Request):
 @app.post('/dealer',response_class=HTMLResponse)
 def dealer(request: Request,
      address: str = Form(...)):
+    
+    cur = conn.cursor()
+    cur.execute("SELECT * FROM info")
+    users = cur.fetchall()
+    cur.close()
+    
+    
     GOOGLE_MAPS_API_KEY='AIzaSyB8zWPtv1G6B05tim27903BAeUQXjGS9dc'
     url = f"https://maps.googleapis.com/maps/api/geocode/json?address={address}&key={GOOGLE_MAPS_API_KEY}"
 
     # Make a GET request to the Google Maps Geocoding API
     response = requests.get(url)
     data = response.json()
-
+   
     # Parse the response data to extract longitude and latitude
     if data['status'] == 'OK':
         results = data['results'][0]
@@ -100,20 +107,28 @@ def dealer(request: Request,
                 user_latitude = user_location['lat']
 
                 # Calculate distance between input address and user's address
-                distance = geodesic((input_latitude, input_longitude), (user_latitude, user_longitude)).kilometers
+                distance = geodesic((latitude, longitude), (user_latitude, user_longitude)).kilometers
 
-                # Append user information along with distance
-                nearest_users.append({
-                    'name': user_name,
-                    'address': user_address,
-                    'phone_number': user_phone_number,
-                    'energy_consumption': user_energy_consumption,
-                    'distance': distance
-                })
+                if distance <= 5:  # Filter users within 5 kilometers
+                    nearest_users.append({
+                        'name': user_name,
+                        'address': user_address,
+                        'phone_number': user_phone_number,
+                        'energy_consumption': user_energy_consumption,
+                        'distance': distance
+                    })
 
         nearest_users.sort(key=lambda x: x['distance'])
+    
 
-        print(nearest_users)  
+    context = {
+        "request": request,
+        "nearest_users":nearest_users
+    }
+
+    return templates.TemplateResponse("dealerres.html",context)
+
+        
     
               
 

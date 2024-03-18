@@ -43,10 +43,15 @@
         .form-group textarea {
             flex: 1;
         }
+
+        /* Set table width to 100% */
+        table {
+            width: 100%;
+        }
     </style>
 </head>
 <body>
-    <div class="center-container">
+    <div class="center-container" style="display: flex; flex-direction: column;justify-content: space-around; ">
         <div class="input-container">
             <form id="myForm" action="/dealer" method="post">
                 <div class="form-group">
@@ -55,6 +60,30 @@
                 </div>
                 <div style="text-align: center;"><button  type="submit" class="btn btn-primary">Submit</button></div>
             </form>
+        </div>
+        <div>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Address</th>
+                        <th>Phone Number</th>
+                        <th>Energy Consumption</th>
+                        <th>Distance (km)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for user in nearest_users %}
+                    <tr>
+                        <td>{{ user.name }}</td>
+                        <td>{{ user.address }}</td>
+                        <td>{{ user.phone_number }}</td>
+                        <td>{{ user.energy_consumption }}</td>
+                        <td>{{ user.distance }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
         </div>
     </div>
     
